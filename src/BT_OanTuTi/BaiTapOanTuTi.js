@@ -3,7 +3,8 @@ import "./BaiTapOanTuTi.css";
 import Computer from "./Computer";
 import GameResult from "./GameResult";
 import Player from "./Player";
-export default class BaiTapOanTuTi extends Component {
+import { connect } from "react-redux";
+class BaiTapOanTuTi extends Component {
   render() {
     return (
       <div className="gameOanTuTi">
@@ -17,7 +18,14 @@ export default class BaiTapOanTuTi extends Component {
               style={{ width: "350px", height: "120px" }}
               className="btn btn-success mt-5 "
             >
-              <span className="display-4">Play game</span>
+              <span
+                className="display-4"
+                onClick={() => {
+                  this.props.playGame();
+                }}
+              >
+                Play game
+              </span>
             </button>
           </div>
           <div className="col-4">
@@ -28,3 +36,28 @@ export default class BaiTapOanTuTi extends Component {
     );
   }
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    playGame: () => {
+      let count = 0;
+      // khai báo hàm lặp đi lặp lại
+      let randomComputerItem = setInterval(() => {
+        dispatch({
+          type: "RAN_DOM",
+        });
+        count++;
+        if (count >= 30) {
+          // Dừng hàm lặp interval
+          clearInterval(randomComputerItem);
+        }
+      }, 100);
+    },
+  };
+};
+
+const mapStateToProps = (state) => {
+  return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(BaiTapOanTuTi);
