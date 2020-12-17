@@ -18,8 +18,8 @@ const stateDefault = {
   ],
 
   ketQua: "Thua game!",
-  soBanThang: 10,
-  soBanChoi: 20,
+  soBanThang: 0,
+  soBanChoi: 0,
 
   computer: {
     ma: "keo",
@@ -30,14 +30,15 @@ const stateDefault = {
 const BaiTapOanTuTiReducer = (state = stateDefault, action) => {
   switch (action.type) {
     case "CHON_KBB": {
-      // Reset mảng cược
       let mangCuocUpdate = [...state.mangDatCuoc];
       mangCuocUpdate = mangCuocUpdate.map((item, index) => {
-        if (item.ma === action.maCuoc) {
-          return { ...item, datCuoc: true };
-        }
         return { ...item, datCuoc: false };
       });
+      // console.log("reset false", mangCuocUpdate);
+      let index = mangCuocUpdate.findIndex((qc) => qc.ma === action.maCuoc);
+      if (index !== -1) {
+        mangCuocUpdate[index].datCuoc = true;
+      }
 
       state.mangDatCuoc = mangCuocUpdate;
       return { ...state };
@@ -46,14 +47,17 @@ const BaiTapOanTuTiReducer = (state = stateDefault, action) => {
     case "RAN_DOM": {
       let computerRandomPlay = Math.floor(Math.random() * 3);
       let quanCuocNgauNhien = state.mangDatCuoc[computerRandomPlay];
-      console.log("computerRandom", quanCuocNgauNhien);
-      state.computer = quanCuocNgauNhien;
+      // console.log("computerRandom", quanCuocNgauNhien);
+      state.computer = { ...quanCuocNgauNhien };
+
       return { ...state };
     }
 
     case "END_GAME": {
       let player = state.mangDatCuoc.find((item) => item.datCuoc === true);
       let computer = state.computer;
+      // console.log("computer", computer);
+      // console.log("computerMa", computer.ma);
 
       switch (player.ma) {
         case "keo":
@@ -61,26 +65,32 @@ const BaiTapOanTuTiReducer = (state = stateDefault, action) => {
             state.ketQua = "Hoà game";
           } else if ("bua") {
             state.ketQua = "Thua game";
+            state.soBanThang -= 1;
           } else {
             state.ketQua = "Win game";
+            state.soBanThang += 1;
           }
           break;
 
         case "bua":
           if (computer.ma === "keo") {
             state.ketQua = "Win game";
+            state.soBanThang += 1;
           } else if ("bua") {
             state.ketQua = "Hoà game";
           } else {
             state.ketQua = "Thua game";
+            state.soBanThang -= 1;
           }
           break;
 
         case "bao":
           if (computer.ma === "keo") {
             state.ketQua = "Thua game";
+            state.soBanThang -= 1;
           } else if ("bua") {
             state.ketQua = "Win game";
+            state.soBanThang += 1;
           } else {
             state.ketQua = "Hoà game";
           }
@@ -88,8 +98,10 @@ const BaiTapOanTuTiReducer = (state = stateDefault, action) => {
 
         default:
           state.ketQua = "Win game";
+          state.soBanThang += 1;
           break;
       }
+      state.soBanChoi += 1;
 
       return { ...state };
     }
