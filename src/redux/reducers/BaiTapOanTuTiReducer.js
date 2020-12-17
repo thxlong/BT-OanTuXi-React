@@ -34,7 +34,7 @@ const BaiTapOanTuTiReducer = (state = stateDefault, action) => {
       mangCuocUpdate = mangCuocUpdate.map((item, index) => {
         return { ...item, datCuoc: false };
       });
-      // console.log("reset false", mangCuocUpdate);
+      console.log("reset false", mangCuocUpdate);
       let index = mangCuocUpdate.findIndex((qc) => qc.ma === action.maCuoc);
       if (index !== -1) {
         mangCuocUpdate[index].datCuoc = true;
@@ -47,7 +47,7 @@ const BaiTapOanTuTiReducer = (state = stateDefault, action) => {
     case "RAN_DOM": {
       let computerRandomPlay = Math.floor(Math.random() * 3);
       let quanCuocNgauNhien = state.mangDatCuoc[computerRandomPlay];
-      // console.log("computerRandom", quanCuocNgauNhien);
+      console.log("computerRandom", quanCuocNgauNhien);
       state.computer = { ...quanCuocNgauNhien };
 
       return { ...state };
@@ -56,14 +56,14 @@ const BaiTapOanTuTiReducer = (state = stateDefault, action) => {
     case "END_GAME": {
       let player = state.mangDatCuoc.find((item) => item.datCuoc === true);
       let computer = state.computer;
-      // console.log("computer", computer);
-      // console.log("computerMa", computer.ma);
+      console.log("computer", computer);
+      console.log("computerMa", computer.ma);
 
       switch (player.ma) {
         case "keo":
           if (computer.ma === "keo") {
             state.ketQua = "Hoà game";
-          } else if ("bua") {
+          } else if (computer.ma === "bua") {
             state.ketQua = "Thua game";
             state.soBanThang -= 1;
           } else {
@@ -76,7 +76,7 @@ const BaiTapOanTuTiReducer = (state = stateDefault, action) => {
           if (computer.ma === "keo") {
             state.ketQua = "Win game";
             state.soBanThang += 1;
-          } else if ("bua") {
+          } else if (computer.ma === "bua") {
             state.ketQua = "Hoà game";
           } else {
             state.ketQua = "Thua game";
@@ -88,7 +88,7 @@ const BaiTapOanTuTiReducer = (state = stateDefault, action) => {
           if (computer.ma === "keo") {
             state.ketQua = "Thua game";
             state.soBanThang -= 1;
-          } else if ("bua") {
+          } else if (computer.ma === "bua") {
             state.ketQua = "Win game";
             state.soBanThang += 1;
           } else {
