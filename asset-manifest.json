@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/BT-OanTuXi-React/static/css/main.07b0cd55.chunk.css",
+    "main.js": "/BT-OanTuXi-React/static/js/main.3832d5ac.chunk.js",
+    "main.js.map": "/BT-OanTuXi-React/static/js/main.3832d5ac.chunk.js.map",
+    "runtime-main.js": "/BT-OanTuXi-React/static/js/runtime-main.4324fac3.js",
+    "runtime-main.js.map": "/BT-OanTuXi-React/static/js/runtime-main.4324fac3.js.map",
+    "static/css/2.637f5471.chunk.css": "/BT-OanTuXi-React/static/css/2.637f5471.chunk.css",
+    "static/js/2.ddbb5afd.chunk.js": "/BT-OanTuXi-React/static/js/2.ddbb5afd.chunk.js",
+    "static/js/2.ddbb5afd.chunk.js.map": "/BT-OanTuXi-React/static/js/2.ddbb5afd.chunk.js.map",
+    "static/js/3.e3497b23.chunk.js": "/BT-OanTuXi-React/static/js/3.e3497b23.chunk.js",
+    "static/js/3.e3497b23.chunk.js.map": "/BT-OanTuXi-React/static/js/3.e3497b23.chunk.js.map",
+    "index.html": "/BT-OanTuXi-React/index.html",
+    "static/css/2.637f5471.chunk.css.map": "/BT-OanTuXi-React/static/css/2.637f5471.chunk.css.map",
+    "static/css/main.07b0cd55.chunk.css.map": "/BT-OanTuXi-React/static/css/main.07b0cd55.chunk.css.map",
+    "static/js/2.ddbb5afd.chunk.js.LICENSE.txt": "/BT-OanTuXi-React/static/js/2.ddbb5afd.chunk.js.LICENSE.txt",
+    "static/media/BaiTapOanTuTi.css": "/BT-OanTuXi-React/static/media/bgGame.3f5b228c.png",
+    "static/media/logo.6ce24c58.svg": "/BT-OanTuXi-React/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4324fac3.js",
+    "static/css/2.637f5471.chunk.css",
+    "static/js/2.ddbb5afd.chunk.js",
+    "static/css/main.07b0cd55.chunk.css",
+    "static/js/main.3832d5ac.chunk.js"
+  ]
+}
