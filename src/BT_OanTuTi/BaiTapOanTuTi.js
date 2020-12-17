@@ -50,6 +50,10 @@ const mapDispatchToProps = (dispatch) => {
         if (count >= 30) {
           // Dừng hàm lặp interval
           clearInterval(randomComputerItem);
+
+          dispatch({
+            type: "END_GAME",
+          });
         }
       }, 100);
     },
